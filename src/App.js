@@ -6,7 +6,7 @@ import './App.css';
 import { useState } from 'react';
 
 //Importamos los componentes que usa la App
-import Button from './Button';
+import Button from './Buttons';
 
 function App() {
   // Para definir el estado con hook utilizamos useState
