@@ -1,25 +1,46 @@
+// Importar el fichero logo.svg y lo guarda en la variable 'logo' 
 import logo from './logo.svg';
+
+// Aplicar los estilos CSS contenidos en el fichero App.css
 import './App.css';
+import { useState } from 'react';
+
+//Importamos los componentes que usa la App
+import Button from './Button';
 
 function App() {
+  // Para definir el estado con hook utilizamos useState
+  // En el parámetro de useState le puedes poner cualquier tipo de valor (string, number, objeto, array)
+  const [bgColor, setBgColor] = useState('yellow');
+
+  function clickedButton() {
+    const red = Math.floor(Math.random() * 255);
+    const green = Math.floor(Math.random() * 255);
+    const blue = Math.floor(Math.random() * 255);
+
+    setBgColor(`rgb(${red}, ${green}, ${blue})`);
+    console.log(bgColor);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
+    // class => className. Aplicamos la clase .App a este div
+
+    // JSX puede tener hijos como el HTML 'normal'
+    // img src={logo} . Establece el atributo 'src' con el valor de la variable 'logo'
+
+    // REgla de oro de todos los componentes JSX: Tienen que tener un contenedor 'padre' (tipo <div>) 
+
+    <div className="App" >
+      <header className="App-header" style={{ 'backgroundColor': bgColor }}>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Button changeColor={clickedButton} texto="Haz click en mi!" />
       </header>
     </div>
   );
 }
+
+
+
+
 
 export default App;
